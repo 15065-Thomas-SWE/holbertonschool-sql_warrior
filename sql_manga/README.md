@@ -12,3 +12,10 @@ SELECT titre, annee, prix_base
 FROM mangas
 WHERE annee >= 2010
 ORDER BY annee ASC;
+
+# task_3
+
+SELECT prenom, nom, ville
+FROM clients
+WHERE ville = 'Lyon' 
+OR ville = 'Bordeaux';
