@@ -38,6 +38,16 @@ WHERE titre LIKE '%Tome 1%'
 ORDER BY num_manga;
 
 # task_5
+Calculer le nombre total de mangas, le prix moyen et le prix maximum.
+Arrondir le prix moyen à 2 décimales.
+Utilisez des alias afin d’obtenir les mêmes intitulés de colonnes que ceux affichés dans la section Résultat attendu.
+
+-- Statistiques globales sur les mangas
+SELECT
+    COUNT(*) AS nombre_total_de_mangas,  
+    ROUND(AVG(prix_base), 2) AS prix_moyen, 
+    MAX(prix_base) AS prix_max 
+FROM mangas;
 
 # task_6
 
