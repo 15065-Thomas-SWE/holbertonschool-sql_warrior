@@ -78,10 +78,44 @@ GROUP BY l.num_facture
 ORDER BY l.num_facture;
 
 # task_8
+Afficher le nombre de clients et le total d’enfants par ville.
+Trier par ville.
+Les noms des colonnes doivent correspondre exactement à ceux indiqués dans la section Résultat attendu (pensez à utiliser les bons alias).
+Résultat attendu
+
+SELECT ville,
+COUNT(*) AS nombre_de_clients,
+SUM(enfants) AS nombre_d_enfants 
+FROM clients
+GROUP BY ville
+ORDER BY ville;
 
 # task_9
+Afficher les mangas avec leur mangaka.
+Afficher le titre du manga, le prénom, le nom et le pays du mangaka.
+Trier par titre de manga.
+
+SELECT m.titre, k.prenom, k.nom, k.pays
+FROM mangas AS m
+INNER JOIN mangakas AS k 
+ON k.code_mangaka = m.code_mangaka
+ORDER BY m.titre;
 
 # task_10
+Afficher le détail des locations.
+Afficher le numéro de facture, le client (nom et prenom), le manga (titre), le type de location (libelle) et la date de retour.
+
+SELECT l.num_facture, c.prenom, c.nom, m.titre, t.libelle, l.date_retour
+FROM table_location AS l
+INNER JOIN factures AS f 
+ON f.num_facture = l.num_facture  
+INNER JOIN clients AS c 
+ON c.code_client = f.code_client  
+INNER JOIN mangas AS m   
+ON m.num_manga = l.num_manga
+INNER JOIN types_location AS t 
+ON t.code_type = l.code_type
+ORDER BY c.code_client, l.num_facture, l.num_manga;
 
 # task_11
 
