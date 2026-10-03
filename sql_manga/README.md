@@ -42,11 +42,9 @@ Calculer le nombre total de mangas, le prix moyen et le prix maximum.
 Arrondir le prix moyen à 2 décimales.
 Utilisez des alias afin d’obtenir les mêmes intitulés de colonnes que ceux affichés dans la section Résultat attendu.
 
--- Statistiques globales sur les mangas
-SELECT
-    COUNT(*) AS nombre_total_de_mangas,  
-    ROUND(AVG(prix_base), 2) AS prix_moyen, 
-    MAX(prix_base) AS prix_max 
+SELECT COUNT(*) AS nombre_total_de_mangas,  
+ROUND(AVG(prix_base), 2) AS prix_moyen, 
+MAX(prix_base) AS prix_max 
 FROM mangas;
 
 # task_6
@@ -58,12 +56,26 @@ Les noms des colonnes doivent correspondre exactement à ceux indiqués dans la 
 SELECT g.signification AS genre,
 COUNT(*) AS nombre_de_manga_par_genre
 FROM mangas AS m
-JOIN genres_manga AS g 
+INNER JOIN genres_manga AS g 
 ON g.code_genre = m.code_genre
 GROUP BY g.code_genre, g.signification
 ORDER BY nombre_de_manga_par_genre DESC,g.code_genre ASC;  
 
 # task_7
+Calculer le montant de chaque facture.
+Le montant d’une ligne se calcule ainsi : prix_base × coefficient du type de location.
+Afficher le numéro de facture et le montant total.
+Les noms des colonnes doivent correspondre exactement à ceux indiqués dans la section Résultat attendu (pensez à utiliser les bons alias).
+
+SELECT l.num_facture,
+SUM(m.prix_base * t.coefficient) AS depenses
+FROM table_location AS l
+INNER JOIN mangas AS m         
+ON m.num_manga = l.num_manga
+INNER JOIN types_location AS t 
+ON t.code_type = l.code_type
+GROUP BY l.num_facture
+ORDER BY l.num_facture;
 
 # task_8
 
