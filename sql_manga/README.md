@@ -50,6 +50,18 @@ SELECT
 FROM mangas;
 
 # task_6
+Compter le nombre de mangas par genre.
+Afficher le genre ainsi que le nombre de mangas correspondants.
+Trier les résultats du genre le plus représenté au moins représenté.
+Les noms des colonnes doivent correspondre exactement à ceux indiqués dans la section Résultat attendu (pensez à utiliser les bons alias).
+
+SELECT g.signification AS genre,
+COUNT(*) AS nombre_de_manga_par_genre
+FROM mangas AS m
+JOIN genres_manga AS g 
+ON g.code_genre = m.code_genre
+GROUP BY g.code_genre, g.signification
+ORDER BY nombre_de_manga_par_genre DESC,g.code_genre ASC;  
 
 # task_7
 
