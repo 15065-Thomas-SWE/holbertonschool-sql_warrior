@@ -3,10 +3,15 @@
 docker exec -it mysql_dev mysql -u root -proot tp_manga
 
 # task_1
+Afficher tous les mangas avec leur numéro, leur titre, leur prix de base et leur année.
+Trier les résultats par titre.
 
 SELECT num_manga, titre, prix_base, annee FROM mangas ORDER BY titre;
 
 # task_2
+Afficher les mangas sortis à partir de 2010.
+Afficher uniquement le titre, l’année et le prix de base.
+Trier les mangas par annee dans un ordre ascendant.
 
 SELECT titre, annee, prix_base
 FROM mangas
@@ -14,8 +19,52 @@ WHERE annee >= 2010
 ORDER BY annee ASC;
 
 # task_3
+Afficher les clients habitant à Lyon ou à Bordeaux.
+Afficher le prénom, le nom et la ville.
 
 SELECT prenom, nom, ville
 FROM clients
 WHERE ville = 'Lyon' 
 OR ville = 'Bordeaux';
+
+# task_4
+Afficher les mangas dont le titre contient « Tome 1 ».
+Affiche uniquement le num_manga et le titre.
+Trier les résultats par num_manga.
+
+SELECT num_manga, titre
+FROM mangas
+WHERE titre LIKE '%Tome 1%'
+ORDER BY num_manga;
+
+# task_5
+
+# task_6
+
+# task_7
+
+# task_8
+
+# task_9
+
+# task_10
+
+# task_11
+
+# task_12
+
+# task_13
+
+# task_14
+
+# task_15
+
+# task_16
+
+# task_17
+
+# task_18
+
+# task_19
+
+# task_20
