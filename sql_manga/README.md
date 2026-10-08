@@ -118,6 +118,22 @@ ON t.code_type = l.code_type
 ORDER BY c.code_client, l.num_facture, l.num_manga;
 
 # task_11
+Afficher les 5 clients ayant généré le plus de chiffre d’affaires.
+Afficher le code client, le prénom, le nom, le nombre de locations et le total dépensé par client.
+
+SELECT c.code_client, c.prenom, c.nom,
+COUNT(*) AS nombre_de_location,
+ROUND(SUM(m.prix_base * t.coefficient), 2) AS total_depenses
+FROM table_location AS l
+INNER JOIN factures AS f
+ON f.num_facture = l.num_facture 
+INNER JOIN clients AS c
+ON c.code_client = f.code_client
+INNER JOIN mangas AS m ON m.num_manga = l.num_manga 
+INNER JOIN types_location t ON t.code_type = l.code_type 
+GROUP BY c.code_client, c.prenom, c.nom
+ORDER BY total_depenses DESC
+LIMIT 5;
 
 # task_12
 
